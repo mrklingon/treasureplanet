@@ -45,6 +45,7 @@ basic.forever(function () {
             game.addScore(randint(13, 73))
             ship.set(LedSpriteProperty.X, 2)
             ship.set(LedSpriteProperty.Y, 4)
+            ship.set(LedSpriteProperty.Direction, randint(0, 359))
             asteroid.delete()
         }
         basic.pause(237)
