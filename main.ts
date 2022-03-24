@@ -15,7 +15,13 @@ ship = game.createSprite(2, 4)
 ship.turn(Direction.Left, 90)
 game.setLife(5)
 basic.showIcon(IconNames.Target)
-basic.showString("Treasure Planet")
+images.createBigImage(`
+    # # # . . . . . . .
+    . # . # # . . . # .
+    . # . # . # . . . .
+    . # . # # . . # . #
+    . . . # . . . . . .
+    `).scrollImage(1, 200)
 basic.forever(function () {
     sen2 = game.createSprite(4, 1)
     basic.pause(500)
@@ -73,7 +79,6 @@ basic.forever(function () {
             game.addScore(randint(13, 73))
             ship.set(LedSpriteProperty.X, 2)
             ship.set(LedSpriteProperty.Y, 4)
-            ship.set(LedSpriteProperty.Direction, randint(0, 359))
             asteroid.delete()
         }
         basic.pause(237)
