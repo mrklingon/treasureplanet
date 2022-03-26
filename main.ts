@@ -6,11 +6,21 @@ input.onButtonPressed(Button.B, function () {
     ship.move(-1)
     ship.ifOnEdgeBounce()
 })
+input.onGesture(Gesture.Shake, function () {
+    droid += 1
+    if (1 < droid) {
+        droid = 0
+        music.playTone(131, music.beat(BeatFraction.Eighth))
+    } else {
+        music.playTone(523, music.beat(BeatFraction.Eighth))
+    }
+})
 let asteroid: game.LedSprite = null
 let sen1: game.LedSprite = null
 let sen4: game.LedSprite = null
 let sen3: game.LedSprite = null
 let sen2: game.LedSprite = null
+let droid = 0
 let ship: game.LedSprite = null
 ship = game.createSprite(2, 4)
 ship.turn(Direction.Left, 90)
@@ -23,6 +33,20 @@ images.createBigImage(`
     . # . # # . . # . #
     . . . # . . . . . .
     `).scrollImage(1, 200)
+droid = 0
+basic.forever(function () {
+    if (1 == droid) {
+        ship.move(1)
+        ship.ifOnEdgeBounce()
+        basic.pause(50)
+        if (0 == ship.get(LedSpriteProperty.Y)) {
+            basic.pause(1000)
+        }
+        if (game.isGameOver()) {
+            droid = 0
+        }
+    }
+})
 basic.forever(function () {
     sen2 = game.createSprite(4, 1)
     basic.pause(500)
