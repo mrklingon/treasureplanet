@@ -3,7 +3,8 @@ input.onButtonPressed(Button.A, function () {
     ship.ifOnEdgeBounce()
 })
 input.onButtonPressed(Button.B, function () {
-    ship.turn(Direction.Right, 45)
+    ship.move(-1)
+    ship.ifOnEdgeBounce()
 })
 let asteroid: game.LedSprite = null
 let sen1: game.LedSprite = null
